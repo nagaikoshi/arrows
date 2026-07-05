@@ -27,6 +27,10 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'claude-sonnet-5',
         max_tokens: maxTokens,
+        // このエンドポイントは構造化JSONの生成のみに使うため、推論(thinking)は不要。
+        // 有効なままだとthinkingブロックがcontent[0]を占有し、かつmax_tokensの
+        // 予算を消費してしまう（テキスト生成前に打ち切られる原因になっていた）。
+        thinking: { type: 'disabled' },
         messages: [{ role: 'user', content: prompt }],
       }),
     });
@@ -38,7 +42,11 @@ export default async function handler(req, res) {
       return res.status(response.status).json({ error: data.error?.message || 'Claude API error' });
     }
 
-    return res.status(200).json({ text: data.content?.[0]?.text || '', stopReason: data.stop_reason });
+    console.log('Claude API content blocks', JSON.stringify(data.content));
+
+    const textBlock = (data.content || []).find(block => block.type === 'text');
+
+    return res.status(200).json({ text: textBlock?.text || '', stopReason: data.stop_reason });
   } catch (err) {
     console.error('Claude API request failed', err);
     return res.status(500).json({ error: 'Internal server error' });
