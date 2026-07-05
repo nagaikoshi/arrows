@@ -20,8 +20,8 @@ export default function CoursePage({ onGoToPlan }) {
     try {
       const result = await generateModelCourse(destination);
       setCourse(result);
-    } catch {
-      setError('コースの生成に失敗しました。デプロイ環境でANTHROPIC_API_KEYが設定されているか確認してください。');
+    } catch (err) {
+      setError(`コースの生成に失敗しました: ${err.message || '不明なエラー'}`);
     } finally {
       setIsGenerating(false);
     }

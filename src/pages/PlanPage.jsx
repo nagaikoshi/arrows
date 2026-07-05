@@ -56,7 +56,7 @@ export default function PlanPage() {
       const result = await generateItinerary(spots, conditions);
       setItinerary(result);
     } catch (err) {
-      setError('行程の生成に失敗しました。デプロイ環境でANTHROPIC_API_KEYが設定されているか確認してください。');
+      setError(`行程の生成に失敗しました: ${err.message || '不明なエラー'}`);
     } finally {
       setIsGenerating(false);
     }

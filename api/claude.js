@@ -34,11 +34,13 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
+      console.error('Claude API error', response.status, data);
       return res.status(response.status).json({ error: data.error?.message || 'Claude API error' });
     }
 
     return res.status(200).json({ text: data.content?.[0]?.text || '' });
   } catch (err) {
+    console.error('Claude API request failed', err);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
