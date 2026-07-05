@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       return res.status(response.status).json({ error: data.error?.message || 'Claude API error' });
     }
 
-    return res.status(200).json({ text: data.content?.[0]?.text || '' });
+    return res.status(200).json({ text: data.content?.[0]?.text || '', stopReason: data.stop_reason });
   } catch (err) {
     console.error('Claude API request failed', err);
     return res.status(500).json({ error: 'Internal server error' });

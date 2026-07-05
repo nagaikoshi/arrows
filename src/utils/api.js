@@ -35,12 +35,24 @@ async function callClaude(prompt, maxTokens = 1500) {
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.error || 'Claude API error');
+  // eslint-disable-next-line no-console
+  console.log('[Claude raw response]', { stopReason: data.stopReason, text: data.text });
+  if (data.stopReason === 'max_tokens') {
+    // eslint-disable-next-line no-console
+    console.warn('[Claude] response was truncated by max_tokens — increase maxTokens');
+  }
   return data.text;
 }
 
 function parseJsonResponse(text) {
   const clean = text.replace(/```json|```/g, '').trim();
-  return JSON.parse(clean);
+  try {
+    return JSON.parse(clean);
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('[Claude] JSON parse failed. Raw text was:', text);
+    throw new Error(`AIの返答をJSONとして解析できませんでした: ${e.message}`);
+  }
 }
 
 // ---------------------------------------------------------------------------
