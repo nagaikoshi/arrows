@@ -1,0 +1,56 @@
+.saved-page { display: flex; flex-direction: column; gap: 12px; padding: 1.25rem; max-width: 640px; margin: 0 auto; }
+
+.saved-list { display: flex; flex-direction: column; gap: 8px; }
+
+.saved-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.saved-card:hover { box-shadow: var(--shadow-sm); }
+.saved-card.open { box-shadow: var(--shadow-md); }
+
+.saved-card-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  border: none;
+  background: transparent;
+  text-align: left;
+}
+
+.saved-card-info { flex: 1; min-width: 0; }
+.saved-card-date { font-size: 13px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.saved-card-spots { font-size: 13px; color: var(--text-muted); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.saved-card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.saved-delete {
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  padding: 5px;
+  display: flex;
+  border-radius: 6px;
+  transition: background 0.1s, color 0.1s;
+}
+.saved-delete:hover { background: var(--danger-bg); color: var(--danger); }
+
+.saved-chevron { color: var(--text-faint); font-size: 12px; transition: transform 0.2s; }
+.saved-chevron.open { transform: rotate(180deg); }
+
+.saved-card-body {
+  padding: 4px 16px 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  animation: expandIn 0.2s ease;
+}
+@keyframes expandIn { from { opacity: 0; } to { opacity: 1; } }
+
+.saved-empty { text-align: center; padding: 3rem 1rem; color: var(--text-faint); font-size: 14px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.saved-empty-icon { font-size: 34px; }
+.saved-empty-sub { font-size: 12px; }

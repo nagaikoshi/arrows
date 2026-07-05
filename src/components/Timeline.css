@@ -1,0 +1,74 @@
+.timeline { display: flex; flex-direction: column; gap: 14px; }
+
+.timeline-summary {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--accent-bg);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  line-height: 1.7;
+  border-left: 3px solid var(--accent);
+}
+
+.timeline-list { display: flex; flex-direction: column; }
+
+.tl-block {
+  animation: tlIn 0.3s ease both;
+}
+@keyframes tlIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tl-row { display: flex; gap: 12px; }
+
+.tl-time {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  width: 44px;
+  text-align: right;
+  padding-top: 2px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.tl-track { display: flex; flex-direction: column; align-items: center; padding-top: 5px; flex-shrink: 0; }
+.tl-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+.tl-line { width: 2px; flex: 1; background: var(--border); margin-top: 6px; min-height: 20px; }
+
+.tl-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.15s;
+}
+.tl-card:hover { box-shadow: var(--shadow-sm); }
+
+.tl-card-header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.tl-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.tl-duration { font-size: 12px; color: var(--text-faint); flex-shrink: 0; }
+
+.tl-tip { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-top: 5px; }
+
+.tl-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.tl-tag {
+  font-size: 11px;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+}
+
+.tl-transit {
+  padding: 0 0 10px 68px;
+}
+.tl-transit-label { font-size: 11px; color: var(--text-faint); }

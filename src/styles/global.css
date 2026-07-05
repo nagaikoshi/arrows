@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Serif+Display&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font-sans: 'Zen Kaku Gothic New', sans-serif;
+  --font-display: 'DM Serif Display', serif;
+
+  --bg:          #FAFAF8;
+  --bg-card:     #FFFFFF;
+  --bg-subtle:   #F2F2EE;
+  --border:      #E6E4DE;
+  --text:        #1E1C18;
+  --text-muted:  #6B675E;
+  --text-faint:  #A8A499;
+  --accent:      #1D9E75;
+  --accent-bg:   #E4F5EE;
+  --accent-dark: #0F6E56;
+  --danger:      #C2410C;
+  --danger-bg:   #FEF0E7;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 3px rgba(30,28,24,0.06), 0 1px 2px rgba(30,28,24,0.04);
+  --shadow-md: 0 4px 16px rgba(30,28,24,0.08), 0 2px 4px rgba(30,28,24,0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #12140F;
+    --bg-card:     #1B1E18;
+    --bg-subtle:   #23271F;
+    --border:      #2E3329;
+    --text:        #EFEEE9;
+    --text-muted:  #9A988C;
+    --text-faint:  #5C5A50;
+    --accent:      #2CC990;
+    --accent-bg:   #0E2E22;
+    --accent-dark: #1D9E75;
+    --danger:      #F97316;
+    --danger-bg:   #2E1A0E;
+  }
+}
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button { font-family: var(--font-sans); cursor: pointer; }
+input, select, textarea { font-family: var(--font-sans); }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
