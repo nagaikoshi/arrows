@@ -100,7 +100,7 @@ ${spotList}
   "summary": "この行程の全体的なコンセプトや特徴（1〜2文）"
 }`;
 
-  const text = await callClaude(prompt, 2000);
+  const text = await callClaude(prompt, 4000);
   return parseJsonResponse(text);
 }
 
@@ -128,7 +128,7 @@ export async function generateModelCourse(destination) {
   "tips": ["旅のアドバイス1", "旅のアドバイス2"]
 }`;
 
-  const text = await callClaude(prompt, 1200);
+  const text = await callClaude(prompt, 2000);
   return parseJsonResponse(text);
 }
 
